@@ -21,7 +21,6 @@ class Pendata extends CI_Controller{
 		$this->load->view('pendata/templates/footer');
 	}
 
-
 	public function createObat(){
 
 		$data = [
@@ -36,14 +35,8 @@ class Pendata extends CI_Controller{
 			"harga" => $this->input->post('harga',true),
 			"id_supplier" => $this->input->post('id_supplier',true),
 		];
-		// Load tambah_mahasiswa($data) from M_web
 		$this->M_Pendata->tambah_obat($data);
-		// Redirect to index.php/web/mahasiswa after add data.
 		redirect('/pendata');
-
-	}
-
-	public function readObat(){
 
 	}
 

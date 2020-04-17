@@ -25,7 +25,6 @@
         <tbody>
           <?php $no=1; foreach ($data as $d ) {?>
           <tr>
-        <!--HINT UNTUK MENGHAPUS USER KALIAN DAPAT MENGGUNAKAN FORM, MENGGUNAKAN ANCHOR ATAU HREF PADA BUTTON-->
             <form action="">
               <td><?php echo $no++ ?></td>
               <td><?php echo $d->id_obat?></td>
@@ -38,10 +37,7 @@
               <td><?php echo $d->aturan_pakai ?></td>
               <td><?php echo $d->harga ?></td>
               <td><?php echo $d->id_supplier ?></td>
-
-              <!--BUTTON EDIT MAHASISWA-->
               <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?php echo $d->id_obat ?>"><i class="fas fa-user-edit"></i></button></td>
-              <!--BUTTON HAPUS --- ISI LENGKAPI BUTTON INI -->
               <td><a type="button" class="btn btn-danger"  href="<?= base_url('index.php/Pendata/deleteObat/').$d->id_obat ?>" onClick="return confirm('Apakah Anda Yakin?')" ><i class="fas fa-user-times"></i></a></td>
             </form>
           </tr>
@@ -51,17 +47,16 @@
     </div>
   </div>
 
-<!-- Modal Edit Mahasiswa -->
+<!-- Modal Edit Obat -->
 
 <?php $no=1; foreach ($data as $d ) {?>
   <div class="modal fade" id="edit<?php echo $d->id_obat ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-        <center><h2>EDIT DATA MAHASISWA </h2></center>
+        <center><h2>EDIT DATA OBAT </h2></center>
         </div>
         <div class="modal-body">
-        <!-- isi form ini -->
         <form method="post" action="<?= base_url('index.php/Pendata/updateObat') ?>">
         <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="ID Obat" name="id_obat" value="<?php echo $d->id_obat ?>"  required>
           <div class="form-group">
@@ -124,7 +119,6 @@
       <center><h2>TAMBAH DATA OBAT</h2></center>
       </div>
       <div class="modal-body">
-      <!-- isi form ini -->
       <form method="POST" action="<?= base_url('index.php/Pendata/createObat') ?>">
         <div class="form-group">
           <label for="formGroupExampleInput">ID Obat</label>
