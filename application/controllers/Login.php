@@ -23,16 +23,21 @@ class Login extends CI_Controller{
 		if($cek->num_rows() > 0){
 
 			$user = $cek->result()[0];
+
+			$w_access = array(
+				'id_user' => $user->id_user,
+			);
+			$access = $this->m_login->cek_login("access",$w_access)->result()[0];
  
 			$data_session = array(
 				'nama' => $user->nama,
-				'access' => "pendata",
+				'access' => $access->access,
 				'status' => "login"
 				);
  
 			$this->session->set_userdata($data_session);
  
-			redirect(base_url("Pendata"));
+			redirect(base_url($access->access));
  
 		}else{
 			echo "Username dan password salah !";

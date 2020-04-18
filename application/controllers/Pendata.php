@@ -6,7 +6,7 @@ class Pendata extends CI_Controller{
 		$this->load->model('m_pendata');
 
 		if ($this->session->userdata("access") != "pendata"){
-			redirect("login");
+			redirect("forbidden");
 		}
  
 	}
