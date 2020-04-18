@@ -54,7 +54,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-        <center><h2>EDIT DATA OBAT </h2></center>
+        <h2>EDIT DATA OBAT </h2>
         </div>
         <div class="modal-body">
         <form method="post" action="<?= base_url('index.php/Pendata/updateObat') ?>">
@@ -69,7 +69,12 @@
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Dosis</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dosis" name="dosis" value="<?php echo $d->dosis ?>" required>
+              <div class="input-group mb-2">  
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dosis" name="dosis" value="<?php echo $d->dosis ?>" required>
+                <div class="input-group-prepend">
+                    <div class="input-group-text">gram</div>
+                </div>
+              </div>
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Expire Date</label>
@@ -93,12 +98,12 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Rp.</div>
                     </div>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Harga" name="harga" value="<?php echo $d->harga ?>" required>
+                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Harga" name="harga" value="<?php echo $d->harga ?>" required>
                 </div>
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">ID Supplier</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ID Suplier" name="id_supplier" value="<?php echo $d->id_supplier ?>" required>
+            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="ID Suplier" name="id_supplier" value="<?php echo $d->id_supplier ?>" required>
           </div>
         </div>
         <div class="modal-footer">
@@ -135,7 +140,12 @@
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Dosis</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dosis" name="dosis"  required>
+              <div class="input-group mb-2">  
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dosis" name="dosis" required>
+                <div class="input-group-prepend">
+                    <div class="input-group-text">gram</div>
+                </div>
+              </div>
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Expire Date</label>
