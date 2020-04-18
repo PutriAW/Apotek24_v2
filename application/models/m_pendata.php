@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Pendata extends CI_Model {
+class M_pendata extends CI_Model {
 
-	public function GetObat(){
+	public function get_obat(){
 		$this->db->select('*');
 		$this->db->from('obat');
 		$query = $this->db->get();

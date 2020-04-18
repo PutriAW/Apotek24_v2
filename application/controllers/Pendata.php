@@ -1,10 +1,9 @@
 <?php
-
 class Pendata extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('m_login');
-		$this->load->model('M_Pendata');
+		$this->load->model('m_pendata');
 
 		if ($this->session->userdata("access") != "pendata"){
 			redirect("login");
@@ -13,8 +12,8 @@ class Pendata extends CI_Controller{
 	}
 
 	public function index(){
-		$data['judul'] = 'Apotek24 - Home';
-		$data_obat = $this->M_Pendata->GetObat();
+		$data['judul'] = 'Apotek24 - Pendata';
+		$data_obat = $this->m_pendata->get_obat();
 		$this->load->view('pendata/templates/sidebar', $data);
 		$this->load->view('pendata/templates/header', $data);
 		$this->load->view('pendata/body/index',['data'=>$data_obat]);
@@ -35,9 +34,8 @@ class Pendata extends CI_Controller{
 			"harga" => $this->input->post('harga',true),
 			"id_supplier" => $this->input->post('id_supplier',true),
 		];
-		$this->M_Pendata->tambah_obat($data);
+		$this->m_pendata->tambah_obat($data);
 		redirect('/pendata');
-
 	}
 
 	public function updateObat(){
@@ -53,12 +51,12 @@ class Pendata extends CI_Controller{
 			"id_supplier" => $this->input->post('id_supplier',true),
 		];
 		$id_obat = $this->input->post('id_obat',true);
-		$this->M_Pendata->edit_obat($id_obat,$data);
+		$this->m_pendata->edit_obat($id_obat,$data);
 		redirect('/pendata');
 	}
 
 	public function deleteObat($id_obat){
-		$this->M_Pendata->hapus_obat($id_obat);
+		$this->m_pendata->hapus_obat($id_obat);
 		redirect('/pendata');
 
 	}
