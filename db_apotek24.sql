@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2020 at 07:25 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Generation Time: Apr 19, 2020 at 07:10 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,6 +34,14 @@ CREATE TABLE `access` (
   `access` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `access`
+--
+
+INSERT INTO `access` (`id_access`, `id_user`, `access`) VALUES
+(1, 1, 'admin'),
+(4, 2, 'pendata');
+
 -- --------------------------------------------------------
 
 --
@@ -58,9 +66,7 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id_obat`, `nama_obat`, `jenis`, `dosis`, `expire_date`, `komposisi`, `indikasi`, `aturan_pakai`, `harga`, `id_supplier`) VALUES
-(1, 'Antangin', 'Masuk Angin', '12', '2020-04-23', 'Air, Gula, Garam', 'Mengakibatkan Kantuk', 'Minumnya Masukin Mulut', 15000, 1),
-(231, 'Balsam Geliga', 'Obat Panas', '123', '2020-04-17', '12', 'Minyak Tanah', 'Oleskan', 13000, 123),
-(1123, 'Kalpanax', 'Obat Gatal', '12', '2020-04-02', 'Lemak', 'Membuat Kulit Tidak Kapalan', 'Oleskan', 25000, 23);
+(1, 'Panas Dingin Setamol', 'Jelly', '1000', '2020-04-19', 'Air, Gelatin, Gula', 'Apaan si?', 'Coba makan aja', 1000, 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +145,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`, `username`, `password`) VALUES
 (1, 'Rakha Dzaky', 'Laki-laki', 'Purwokerto', '2000-10-19', 'Pesona Bali Blok B9 19', '085801730223', 'rakhadzaky', 'efe6398127928f1b2e9ef3207fb82663'),
-(2, 'Faisal Ridwan Siregar', 'Laki-laki', 'Kotapinang', '1999-06-21', 'Sukabirus', '08123456789', 'faisalridwan', '202cb962ac59075b964b07152d234b70');
+(2, 'Tsany Rakha', 'Laki-laki', 'Bandung', '2020-01-01', 'Pesona Bali', '085801730223', 'tsanyrakha', 'efe6398127928f1b2e9ef3207fb82663');
 
 --
 -- Indexes for dumped tables
@@ -195,13 +201,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `access`
 --
 ALTER TABLE `access`
-  MODIFY `id_access` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12223;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
