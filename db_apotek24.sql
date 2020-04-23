@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2020 at 04:23 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Waktu pembuatan: 24 Apr 2020 pada 00.47
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `access`
+-- Struktur dari tabel `access`
 --
 
 CREATE TABLE `access` (
@@ -35,18 +35,20 @@ CREATE TABLE `access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `access`
+-- Dumping data untuk tabel `access`
 --
 
 INSERT INTO `access` (`id_access`, `id_user`, `access`) VALUES
 (1, 1, 'admin'),
+(2, 7, 'pendata'),
+(3, 6, 'apoteker'),
 (4, 5, 'pendata'),
 (5, 4, 'kasir');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obat`
+-- Struktur dari tabel `obat`
 --
 
 CREATE TABLE `obat` (
@@ -63,18 +65,19 @@ CREATE TABLE `obat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `obat`
+-- Dumping data untuk tabel `obat`
 --
 
 INSERT INTO `obat` (`id_obat`, `nama_obat`, `jenis`, `dosis`, `expire_date`, `komposisi`, `indikasi`, `aturan_pakai`, `harga`, `id_supplier`) VALUES
 (1, 'Panas Dingin Setamol', 'Jelly', '1000', '2020-04-19', 'Air, Gelatin, Gula', 'Apaan si?', 'Coba makan aja', 1000, 1),
 (2, 'uc 1000', 'muniman', '1000', '2022-10-07', 'jeruk 1kg', 'paan tu ?\r\n', 'sesuka hati', 6000, 1),
-(3, 'paracetamol', 'pereda nyeri', '80', '2022-10-14', 'obat-obatan', 'sakit panas', 'sampai sembuh', 500, 1);
+(3, 'paracetamol', 'pereda nyeri', '80', '2022-10-14', 'obat-obatan', 'sakit panas', 'sampai sembuh', 500, 1),
+(4, 'Methylprednisolone', 'Anti Nyeri', '2', '2021-12-17', 'Methyl', 'Pusing', '2 x 1', 5000, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resep`
+-- Struktur dari tabel `resep`
 --
 
 CREATE TABLE `resep` (
@@ -84,10 +87,18 @@ CREATE TABLE `resep` (
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `resep`
+--
+
+INSERT INTO `resep` (`id_resep`, `id_user`, `tgl_resep`, `deskripsi`) VALUES
+(1, 6, '2020-04-24', 'Paracetamol 500 Mg, Methylprednisolone 2 Mg'),
+(2, 6, '2020-04-24', 'Dexamethasone 300 mg, Amoxcicilin 500 mg');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Struktur dari tabel `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -100,7 +111,7 @@ CREATE TABLE `supplier` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -111,7 +122,7 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data untuk tabel `transaksi`
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `data_transaksi`, `tanggal_transaksi`, `total`) VALUES
@@ -121,7 +132,7 @@ INSERT INTO `transaksi` (`id_transaksi`, `data_transaksi`, `tanggal_transaksi`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -137,7 +148,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`, `username`, `password`) VALUES
@@ -145,81 +156,83 @@ INSERT INTO `users` (`id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_la
 (2, 'Tsany Rakha', 'Laki-laki', 'Bandung', '2020-01-01', 'Pesona Bali', '085801730223', 'tsanyrakha', 'efe6398127928f1b2e9ef3207fb82663'),
 (3, 'adiwidyananda', 'Laki-laki', 'Singaraja', '1998-09-22', 'Singaraja, Bali', '0888228822', 'adiwid', '800f98176685d6ca67187a1a60a6562c'),
 (4, 'hilmiha', 'Laki-laki', 'bjm', '1999-04-25', 'sada', '082140186233', 'hilmiha', '5b36ac0723ba4f25f0bc1d4e531995a6'),
-(5, 'sadlh', 'Laki-laki', 'sadw', '1999-04-25', 'sadwda', '082137482733', 'hilmiha2', 'd9f4a1efd5f8c21a9f3806093dd8c67a');
+(5, 'sadlh', 'Laki-laki', 'sadw', '1999-04-25', 'sadwda', '082137482733', 'hilmiha2', 'd9f4a1efd5f8c21a9f3806093dd8c67a'),
+(6, 'PutriAW', 'Perempuan', 'Jakarta', '1999-04-11', 'Bandung', '082361926025', 'putriaw', 'e10adc3949ba59abbe56e057f20f883e'),
+(7, 'Wind', 'Perempuan', 'Hola', '2000-06-13', 'Bandung', '08234568790', 'wiwin', 'b6d67c9a0571394fc265616f7f47f9fb');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `access`
+-- Indeks untuk tabel `access`
 --
 ALTER TABLE `access`
   ADD PRIMARY KEY (`id_access`);
 
 --
--- Indexes for table `obat`
+-- Indeks untuk tabel `obat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`);
 
 --
--- Indexes for table `resep`
+-- Indeks untuk tabel `resep`
 --
 ALTER TABLE `resep`
   ADD PRIMARY KEY (`id_resep`);
 
 --
--- Indexes for table `supplier`
+-- Indeks untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `access`
+-- AUTO_INCREMENT untuk tabel `access`
 --
 ALTER TABLE `access`
   MODIFY `id_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `obat`
+-- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `resep`
+-- AUTO_INCREMENT untuk tabel `resep`
 --
 ALTER TABLE `resep`
-  MODIFY `id_resep` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
