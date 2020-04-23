@@ -2,7 +2,7 @@
     <div class="box">
       <h2>Data Obat</h2>
           
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#btnTambah">TAMBAH RESEP</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#btnTambahResep">TAMBAH RESEP</button>
       <br><br>
       <table class="table table-bordered" id="table">
         <thead>
@@ -69,10 +69,11 @@
       </div>
     </div>
   </div>
+</div>
 <?php } ?>
 
 <!-- Modal Tambah Resep -->
-<div class="modal fade" id="btnTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+<div class="modal fade" id="btnTambahResep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,22 +87,23 @@
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput">ID User</label>
-            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="ID User" name="id_user" required>
-          </div>
-          <div class="form-group">
+            <input type="number" class="form-control" id="formGroupExampleInput1" placeholder="ID User" name="id_user" required>
+        </div>
+        <div class="form-group">
             <label for="formGroupExampleInput2">Tanggal</label>
             <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Tanggal" name="tgl_resep" required>
-          </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Deskripsi</label>
-              <div class="input-group mb-2">  
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Deskripsi" name="deskripsi" required>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Deskripsi</label>
+          <div class="input-group mb-2">  
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Deskripsi" name="deskripsi" required>
           </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+        </div>  
       </form>
       </div>
     </div>
