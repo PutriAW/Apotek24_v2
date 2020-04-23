@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2020 at 07:10 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Apr 23, 2020 at 10:50 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,8 @@ CREATE TABLE `access` (
 
 INSERT INTO `access` (`id_access`, `id_user`, `access`) VALUES
 (1, 1, 'admin'),
-(4, 2, 'pendata');
+(4, 2, 'pendata'),
+(5, 3, 'kasir');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,9 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id_obat`, `nama_obat`, `jenis`, `dosis`, `expire_date`, `komposisi`, `indikasi`, `aturan_pakai`, `harga`, `id_supplier`) VALUES
-(1, 'Panas Dingin Setamol', 'Jelly', '1000', '2020-04-19', 'Air, Gelatin, Gula', 'Apaan si?', 'Coba makan aja', 1000, 1);
+(1, 'Panas Dingin Setamol', 'Jelly', '1000', '2020-04-19', 'Air, Gelatin, Gula', 'Apaan si?', 'Coba makan aja', 1000, 1),
+(2, 'uc 1000', 'muniman', '1000', '2022-10-07', 'jeruk 1kg', 'paan tu ?\r\n', 'sesuka hati', 6000, 1),
+(3, 'paracetamol', 'pereda nyeri', '80', '2022-10-14', 'obat-obatan', 'sakit panas', 'sampai sembuh', 500, 1);
 
 -- --------------------------------------------------------
 
@@ -124,6 +127,19 @@ CREATE TABLE `supplier` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id_transaksi` int(11) NOT NULL,
+  `data_transaksi` varchar(400) NOT NULL,
+  `tanggal_transaksi` date NOT NULL,
+  `total` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -145,7 +161,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`, `username`, `password`) VALUES
 (1, 'Rakha Dzaky', 'Laki-laki', 'Purwokerto', '2000-10-19', 'Pesona Bali Blok B9 19', '085801730223', 'rakhadzaky', 'efe6398127928f1b2e9ef3207fb82663'),
-(2, 'Tsany Rakha', 'Laki-laki', 'Bandung', '2020-01-01', 'Pesona Bali', '085801730223', 'tsanyrakha', 'efe6398127928f1b2e9ef3207fb82663');
+(2, 'Tsany Rakha', 'Laki-laki', 'Bandung', '2020-01-01', 'Pesona Bali', '085801730223', 'tsanyrakha', 'efe6398127928f1b2e9ef3207fb82663'),
+(3, 'adiwidyananda', 'Laki-laki', 'Singaraja', '1998-09-22', 'Singaraja, Bali', '0888228822', 'adiwid', '800f98176685d6ca67187a1a60a6562c');
 
 --
 -- Indexes for dumped tables
@@ -188,6 +205,12 @@ ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id_transaksi`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -201,13 +224,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `access`
 --
 ALTER TABLE `access`
-  MODIFY `id_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -234,10 +257,16 @@ ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
