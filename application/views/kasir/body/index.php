@@ -123,10 +123,7 @@
 					var r = confirm("Anda yakin menyelesaikan transaksi ?");
 					if (r == true) {
 						document.getElementById("myForm").submit();
-					} 
-					// console.log( $("#kirimdata").val())
-					// console.log( $("#totalharga").val())
-					
+					} 					
 			}
 		</script>
 	</div>
