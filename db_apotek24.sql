@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2020 at 10:50 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Apr 23, 2020 at 04:23 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,8 +40,8 @@ CREATE TABLE `access` (
 
 INSERT INTO `access` (`id_access`, `id_user`, `access`) VALUES
 (1, 1, 'admin'),
-(4, 2, 'pendata'),
-(5, 3, 'kasir');
+(4, 5, 'pendata'),
+(5, 4, 'kasir');
 
 -- --------------------------------------------------------
 
@@ -70,33 +70,6 @@ INSERT INTO `obat` (`id_obat`, `nama_obat`, `jenis`, `dosis`, `expire_date`, `ko
 (1, 'Panas Dingin Setamol', 'Jelly', '1000', '2020-04-19', 'Air, Gelatin, Gula', 'Apaan si?', 'Coba makan aja', 1000, 1),
 (2, 'uc 1000', 'muniman', '1000', '2022-10-07', 'jeruk 1kg', 'paan tu ?\r\n', 'sesuka hati', 6000, 1),
 (3, 'paracetamol', 'pereda nyeri', '80', '2022-10-14', 'obat-obatan', 'sakit panas', 'sampai sembuh', 500, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pembayaran`
---
-
-CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `tgl_pembayaran` date NOT NULL,
-  `total` int(11) NOT NULL,
-  `nama_pemesan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pemesanan`
---
-
-CREATE TABLE `pemesanan` (
-  `id_pemesanan` int(11) NOT NULL,
-  `id_pembayaran` int(11) NOT NULL,
-  `id_obat` int(11) NOT NULL,
-  `qty` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -131,11 +104,19 @@ CREATE TABLE `supplier` (
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
+  `id_transaksi` varchar(25) NOT NULL,
   `data_transaksi` varchar(400) NOT NULL,
   `tanggal_transaksi` date NOT NULL,
   `total` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `data_transaksi`, `tanggal_transaksi`, `total`) VALUES
+('TR-5ea1a24d8cdd8', '1,Panas Dingin Setamol,1000,1,2,uc 1000,6000,1,3,paracetamol,500,4', '2020-04-23', 16000),
+('TR-5ea1a2a5b3904', '1,Panas Dingin Setamol,1000,2,3,paracetamol,500,2', '2020-04-23', -4000);
 
 -- --------------------------------------------------------
 
@@ -162,7 +143,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`, `username`, `password`) VALUES
 (1, 'Rakha Dzaky', 'Laki-laki', 'Purwokerto', '2000-10-19', 'Pesona Bali Blok B9 19', '085801730223', 'rakhadzaky', 'efe6398127928f1b2e9ef3207fb82663'),
 (2, 'Tsany Rakha', 'Laki-laki', 'Bandung', '2020-01-01', 'Pesona Bali', '085801730223', 'tsanyrakha', 'efe6398127928f1b2e9ef3207fb82663'),
-(3, 'adiwidyananda', 'Laki-laki', 'Singaraja', '1998-09-22', 'Singaraja, Bali', '0888228822', 'adiwid', '800f98176685d6ca67187a1a60a6562c');
+(3, 'adiwidyananda', 'Laki-laki', 'Singaraja', '1998-09-22', 'Singaraja, Bali', '0888228822', 'adiwid', '800f98176685d6ca67187a1a60a6562c'),
+(4, 'hilmiha', 'Laki-laki', 'bjm', '1999-04-25', 'sada', '082140186233', 'hilmiha', '5b36ac0723ba4f25f0bc1d4e531995a6'),
+(5, 'sadlh', 'Laki-laki', 'sadw', '1999-04-25', 'sadwda', '082137482733', 'hilmiha2', 'd9f4a1efd5f8c21a9f3806093dd8c67a');
 
 --
 -- Indexes for dumped tables
@@ -179,18 +162,6 @@ ALTER TABLE `access`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`);
-
---
--- Indexes for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_pembayaran`);
-
---
--- Indexes for table `pemesanan`
---
-ALTER TABLE `pemesanan`
-  ADD PRIMARY KEY (`id_pemesanan`);
 
 --
 -- Indexes for table `resep`
@@ -233,18 +204,6 @@ ALTER TABLE `obat`
   MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pemesanan`
---
-ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `resep`
 --
 ALTER TABLE `resep`
@@ -257,16 +216,10 @@ ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
